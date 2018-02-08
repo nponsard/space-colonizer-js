@@ -1,6 +1,6 @@
-"use strict";
 require(['scripts/domReady'], function (domReady) {
     domReady(function () {
-        console.log("page loaded");
-    });
-});
+        console.log("page loaded")
+
+    })
+})
