@@ -1,12 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Space-colonizer</title>
-    <script src="scripts/require.js"></script>
-    <script>require( ['scripts/main'], function() {} );</script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        body {
+            background: black;
+        }
+
+        canvas {
+            background: white;
+        }
+    </style>
+    
 </head>
+
 <body>
-    <div></div>
+    <canvas id="canvas" width="150" height="150"></canvas>
 </body>
+<script src="scripts/require.js"></script>
+<script>require( ['scripts/main'], function() {} );</script>
 </html>

@@ -1,4 +1,4 @@
-import * as modules from "./modules"
+import {test} from "./utils"
 
 let requestAnimFrame = (function () {
     return window.requestAnimationFrame ||
@@ -6,28 +6,24 @@ let requestAnimFrame = (function () {
             window.setTimeout(callback, 1000 / 60);
         };
 })();
-let left = 0
-let right = 0
-let acc = 0
-
-document.addEventListener("keydown", function (e) {
-    console.log(e.key)
-    if (e.key === "ArrowLeft") {
-        left = 1
-    }
-    if (e.key === "ArrowRight") {
-        right = 1
-    }
+let color: string[] = ["black"]
+let pts: number[][] = [[-10, -10,]]
+let x, y: number
+x = 1
+y = 1
+document.addEventListener('dblclick', function (e) {
+    pts.push([x, y])
+    color.push("green")
 })
-document.addEventListener("keyup", function (e) {
-    if (e.key === "ArrowLeft") {
-        left = 0
-    }
-    if (e.key === "ArrowRight") {
-        right = 0
-    }
+document.addEventListener('click', function (e) {
+    pts.push([x, y])
+    color.push("red")
 })
-
+document.addEventListener('mousemove', function (e) {
+    x = e.clientX
+    y = e.clientY
+})
+test()
 // @ts-ignore
 require(['scripts/domReady'], function (domReady) {
     domReady(function () {
