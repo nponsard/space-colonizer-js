@@ -40,10 +40,10 @@
     require(['scripts/domReady'], function (domReady) {
         domReady(function () {
             var canvas = document.querySelector('#canvas');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = 800;
+            canvas.height = 600;
             var context = canvas.getContext('2d');
-            let p1 = new modules.player([100, 100]);
+            let p1 = new modules.player([400, 500]);
             function draw() {
                 context.fillStyle = "#000";
                 context.fillRect(0, 0, canvas.width, canvas.height);
