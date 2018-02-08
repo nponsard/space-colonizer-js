@@ -4,11 +4,12 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports"], factory);
+        define(["require", "exports", "./modules"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    const modules = require("./modules");
     let requestAnimFrame = (function () {
         return window.requestAnimationFrame ||
             function (callback) {
@@ -42,23 +43,39 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             var context = canvas.getContext('2d');
-            let p = 1;
+            let p1 = new modules.player([100, 100]);
             function draw() {
-                context.fillStyle = "#fff";
+                context.fillStyle = "#000";
                 context.fillRect(0, 0, canvas.width, canvas.height);
-                let c = pts.length;
-                for (let i = 0; i < c; i++) {
-                    context.fillStyle = color[i];
-                    context.fillRect(pts[i][0], pts[i][1], 5, 5);
+                if (left && acc > -15) {
+                    acc -= 1;
                 }
-                context.beginPath();
-                context.lineWidth = 3;
-                context.strokeStyle = "yellow";
-                context.moveTo(canvas.width / 2, canvas.height / 2);
-                context.lineTo(x, y);
-                context.stroke();
-                context.fillStyle = "black";
-                context.fillRect(x, y, 5, 5);
+                else if (!left && acc < 0) {
+                    acc += 2;
+                    if (acc > -3) {
+                        acc = 0;
+                    }
+                }
+                else if (right && acc < 15) {
+                    acc += 1;
+                }
+                else if (!right && acc > 0) {
+                    acc -= 2;
+                    if (acc < 3) {
+                        acc = 0;
+                    }
+                }
+                if (p1.position[0] + acc > 0 && p1.position[0] + acc < 760) {
+                    p1.move(acc);
+                }
+                else if (p1.position[0] < 30) {
+                    p1.position[0] = 0;
+                }
+                else if (p1.position[0] > 730) {
+                    p1.position[0] = 760;
+                }
+                context.fillStyle = "green";
+                context.fillRect(p1.position[0], p1.position[1], 40, 40);
                 requestAnimFrame(function () { draw(); });
             }
             draw();
