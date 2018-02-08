@@ -1,5 +1,6 @@
-class player {
-  constructor() {
 
-  }
-}
+require(['scripts/domReady'], function (domReady) {
+    domReady(function () {
+
+    })
+})
