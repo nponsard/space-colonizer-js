@@ -45,6 +45,10 @@
             var context = canvas.getContext('2d');
             let p1 = new modules.player([400, 500]);
             let phase = 0;
+            let mobs = [new modules.mob([800, 800])];
+            for (let i = 0; i < 20; i++) {
+                mobs.push(new modules.mob([i * 40, 0]));
+            }
             function draw() {
                 context.fillStyle = "#000";
                 context.fillRect(0, 0, canvas.width, canvas.height);
@@ -80,6 +84,13 @@
                     p1.shoot();
                 }
                 p1.draw(context);
+                let c = mobs.length;
+                for (let i = 0; i < c; i++) {
+                    if (phase % 50 === 0) {
+                        mobs[i].shoot();
+                    }
+                    mobs[i].draw(context);
+                }
                 requestAnimFrame(function () { draw(); });
             }
             draw();
