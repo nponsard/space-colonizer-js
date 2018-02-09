@@ -8,7 +8,7 @@ export class player {
         this.position[0] += add
     }
     shoot() {
-        this.shoots.push([this.position[0],this.position[1]])
+        this.shoots.push([this.position[0]+15,this.position[1]-10])
 
     }
     draw( context : CanvasRenderingContext2D ) {
@@ -18,7 +18,7 @@ export class player {
         for (let i = 0 ; i<c;i++ ) {
             this.shoots[i][1]-=10
             context.fillStyle = "yellow"
-            context.fillRect(this.shoots[i][0],this.shoots[i][1],5,10)
+            context.fillRect(this.shoots[i][0],this.shoots[i][1],10,20)
         }
     }
 }
