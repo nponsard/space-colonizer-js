@@ -37,6 +37,7 @@ require(['scripts/domReady'], function (domReady) {
         canvas.height = 600
         var context = canvas.getContext('2d');
         let p1 = new modules.player([400, 500])
+        let phase = 0
 
         function draw() {
             context.fillStyle = "#000"
@@ -67,8 +68,11 @@ require(['scripts/domReady'], function (domReady) {
             else if (p1.position[0] > 730) {
                 p1.position[0] = 760
             }
-            context.fillStyle = "green"
-            context.fillRect(p1.position[0], p1.position[1], 40, 40)
+            phase += 1
+            if (phase%10 === 0) {
+                p1.shoot()
+            }
+            p1.draw(context)
             requestAnimFrame(function () { draw() });
         }
 
