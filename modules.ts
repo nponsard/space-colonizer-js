@@ -1,6 +1,6 @@
 export class player {
     position: number[]
-    shoots: number[][] = [[900, 600]]
+    shoots: number[][] = []
     constructor(pos: number[]) {
         this.position = pos
     }
@@ -24,7 +24,7 @@ export class player {
 }
 export class mob {
     position: number[]
-    shoots: number[][] = [[800,800]]
+    shoots: number[][] = []
     constructor(pos: number[]) {
         this.position = pos
     }

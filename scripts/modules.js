@@ -11,7 +11,7 @@
     Object.defineProperty(exports, "__esModule", { value: true });
     class player {
         constructor(pos) {
-            this.shoots = [[900, 600]];
+            this.shoots = [];
             this.position = pos;
         }
         move(add) {
@@ -34,7 +34,7 @@
     exports.player = player;
     class mob {
         constructor(pos) {
-            this.shoots = [[800, 800]];
+            this.shoots = [];
             this.position = pos;
         }
         move(add) {
