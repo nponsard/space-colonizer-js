@@ -38,9 +38,9 @@ require(['scripts/domReady'], function (domReady) {
         var context = canvas.getContext('2d');
         let p1 = new modules.player([400, 500])
         let phase = 0
-        let mobs : modules.mob[] = [new modules.mob([800,800])]
-        for(let i = 0; i<20;i++) {
-            mobs.push(new modules.mob([i*40,0]))
+        let mobs: modules.mob[] = [new modules.mob([800, 800])]
+        for (let i = 0; i < 20; i++) {
+            mobs.push(new modules.mob([i * 40, 0]))
         }
 
         function draw() {
@@ -73,14 +73,14 @@ require(['scripts/domReady'], function (domReady) {
                 p1.position[0] = 760
             }
             phase += 1
-            
-            if (phase%10 === 0) {
+
+            if (phase % 10 === 0) {
                 p1.shoot()
             }
             p1.draw(context)
             let c = mobs.length
-            for (let i = 0; i<c; i++ ) {
-                if (phase%50 ===0 ){
+            for (let i = 0; i < c; i++) {
+                if (phase % 50 === 0) {
                     mobs[i].shoot()
                 }
                 mobs[i].draw(context)
