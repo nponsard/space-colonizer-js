@@ -24,10 +24,17 @@
             context.fillStyle = "green";
             context.fillRect(this.position[0], this.position[1], 40, 40);
             let c = this.shoots.length;
+            console.log(c);
             for (let i = 0; i < c; i++) {
                 this.shoots[i][1] -= 10;
-                context.fillStyle = "yellow";
-                context.fillRect(this.shoots[i][0], this.shoots[i][1], 10, 20);
+                if (this.shoots[i][1] < 10) {
+                    this.shoots.splice(i, 1);
+                    c -= 1;
+                }
+                else {
+                    context.fillStyle = "yellow";
+                    context.fillRect(this.shoots[i][0], this.shoots[i][1], 10, 20);
+                }
             }
         }
     }
@@ -48,18 +55,16 @@
             context.fillStyle = "blue";
             context.fillRect(this.position[0], this.position[1], 40, 40);
             let c = this.shoots.length;
-            let i = 0
-            while (i< c) {
+            for (let i = 0; i < c; i++) {
                 this.shoots[i][1] += this.shoots[i][2];
                 if (this.shoots[i][1] > 600) {
                     this.shoots.splice(i, 1);
-                    c-=1
+                    c -= 1;
                 }
                 else {
                     context.fillStyle = "red";
                     context.fillRect(this.shoots[i][0], this.shoots[i][1], 10, 20);
                 }
-                i+=1
             }
         }
     }

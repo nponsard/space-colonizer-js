@@ -1,6 +1,5 @@
 import * as modules from "./modules"
 
-
 let requestAnimFrame = (function () {
     return window.requestAnimationFrame ||
         function (callback) {                   // Pour les mauvais
@@ -31,7 +30,7 @@ document.addEventListener("keyup", function (e) {
 
 // @ts-ignore
 require(['scripts/domReady'], function (domReady) {
-    domReady(function () {
+    domReady(function () { //when page is loaded
         var canvas = <HTMLCanvasElement>document.querySelector('#canvas');
         canvas.width = 800
         canvas.height = 600
@@ -42,7 +41,7 @@ require(['scripts/domReady'], function (domReady) {
         let mvs = 0
         for (let y = 0; y < 3; y++) {
             for (let x = 0; x < 18; x++) {
-                mobs.push(new modules.mob([4+x * 42, y * 42]))
+                mobs.push(new modules.mob([4 + x * 42, y * 42]))
 
             }
         }
@@ -88,7 +87,6 @@ require(['scripts/domReady'], function (domReady) {
             }
             for (let i = 0; i < c; i++) {
                 if (phase % 50 === 0) {
-
                     if (mvs === 16) {
                         mobs[i].move([0, 5])
                     }
@@ -101,8 +99,6 @@ require(['scripts/domReady'], function (domReady) {
                     if (mvs === 8) {
                         mobs[i].move([0, 5])
                     }
-
-
                 }
                 if (phase % 10 === 0) {
                     if (Math.random() > 0.98) {
@@ -116,7 +112,6 @@ require(['scripts/domReady'], function (domReady) {
             }
             requestAnimFrame(function () { draw() });
         }
-
         draw();
     });
 });
