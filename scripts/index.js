@@ -86,7 +86,7 @@
                 if (phase % 10 === 0) {
                     p1.shoot();
                 }
-                p1.draw(context);
+                mobs = p1.draw(context, mobs);
                 let c = mobs.length;
                 if (phase % 50 === 0) {
                     mvs += 1;
