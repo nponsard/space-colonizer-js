@@ -14,7 +14,6 @@ export class player {
         context.fillStyle = "green"
         context.fillRect(this.position[0], this.position[1], 40, 40)
         let c = this.shoots.length
-        console.log(c)
         let n = 0
         for (let i = 0; i < c; i++) {
             n = 0
