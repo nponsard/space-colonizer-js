@@ -32,8 +32,8 @@ export class mob {
         this.position[0] += add[0]
         this.position[1] += add[1]
     }
-    shoot() {
-        this.shoots.push([this.position[0] + 15, this.position[1] + 40])
+    shoot(speed) {
+        this.shoots.push([this.position[0] + 15, this.position[1] + 40, speed])
 
     }
     draw(context: CanvasRenderingContext2D) {
@@ -41,9 +41,14 @@ export class mob {
         context.fillRect(this.position[0],this.position[1],40,40)
         let c = this.shoots.length
         for (let i = 0; i < c; i++) {
-            this.shoots[i][1] += 10
-            context.fillStyle = "red"
-            context.fillRect(this.shoots[i][0], this.shoots[i][1], 10, 20)
+            this.shoots[i][1] += this.shoots[i][2]
+            if (this.shoots[i][1]>600){
+                this.shoots.splice(i,1)
+            }
+            else {
+                context.fillStyle = "red"
+                context.fillRect(this.shoots[i][0], this.shoots[i][1], 10, 20)
+            }
         }
     }
 

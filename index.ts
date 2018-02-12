@@ -38,9 +38,13 @@ require(['scripts/domReady'], function (domReady) {
         var context = canvas.getContext('2d');
         let p1 = new modules.player([400, 500])
         let phase = 0
-        let mobs: modules.mob[] = [new modules.mob([800, 800])]
-        for (let i = 0; i < 20; i++) {
-            mobs.push(new modules.mob([i * 40, 0]))
+        let mobs: modules.mob[] = []
+        let mvs = 0
+        for (let y = 0; y < 3; y++) {
+            for (let x = 0; x < 18; x++) {
+                mobs.push(new modules.mob([4+x * 42, y * 42]))
+
+            }
         }
 
         function draw() {
@@ -79,11 +83,36 @@ require(['scripts/domReady'], function (domReady) {
             }
             p1.draw(context)
             let c = mobs.length
+            if (phase % 50 === 0) {
+                mvs += 1
+            }
             for (let i = 0; i < c; i++) {
                 if (phase % 50 === 0) {
-                    mobs[i].shoot()
+
+                    if (mvs === 16) {
+                        mobs[i].move([0, 5])
+                    }
+                    else if (mvs > 8) {
+                        mobs[i].move([-5, 0])
+                    }
+                    if (mvs < 8) {
+                        mobs[i].move([5, 0])
+                    }
+                    if (mvs === 8) {
+                        mobs[i].move([0, 5])
+                    }
+
+
+                }
+                if (phase % 10 === 0) {
+                    if (Math.random() > 0.98) {
+                        mobs[i].shoot(Math.floor(Math.random() * 5 + 3))
+                    }
                 }
                 mobs[i].draw(context)
+            }
+            if (mvs === 16) {
+                mvs = 0
             }
             requestAnimFrame(function () { draw() });
         }
