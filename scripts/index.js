@@ -43,7 +43,7 @@
             canvas.width = 800;
             canvas.height = 600;
             var context = canvas.getContext('2d');
-            let p1 = new modules.player([400, 500]);
+            let p1 = new modules.player([400, 500], 3);
             let phase = 0;
             let mobs = [];
             let mvs = 0;
@@ -111,7 +111,7 @@
                             mobs[i].shoot(Math.floor(Math.random() * 5 + 3));
                         }
                     }
-                    mobs[i].draw(context);
+                    mobs[i].draw(context, p1);
                 }
                 if (mvs === 16) {
                     mvs = 0;

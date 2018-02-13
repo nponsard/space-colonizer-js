@@ -10,9 +10,10 @@
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     class player {
-        constructor(pos) {
+        constructor(pos, life) {
             this.shoots = [];
             this.position = pos;
+            this.life = life;
         }
         move(add) {
             this.position[0] += add;
@@ -61,7 +62,7 @@
         shoot(speed) {
             this.shoots.push([this.position[0] + 15, this.position[1] + 40, speed]);
         }
-        draw(context) {
+        draw(context, player) {
             context.fillStyle = "blue";
             context.fillRect(this.position[0], this.position[1], 40, 40);
             let c = this.shoots.length;
@@ -70,6 +71,12 @@
                 if (this.shoots[i][1] > 600) {
                     this.shoots.splice(i, 1);
                     c -= 1;
+                }
+                else if (this.shoots[i][0] + 10 > player.position[0] && this.shoots[i][0] < player.position[0] + 40 && this.shoots[i][1] + 20 > player.position[1] && this.shoots[i][1] < player.position[1] + 40) {
+                    this.shoots.splice(i, 1);
+                    c -= 1;
+                    player.life -= 1;
+                    console.log(player.life);
                 }
                 else {
                     context.fillStyle = "red";
