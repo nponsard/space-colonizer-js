@@ -26,6 +26,10 @@
             context.fillRect(this.position[0], this.position[1], 40, 40);
             let c = this.shoots.length;
             let n = 0;
+            for (let i = 0; i < this.life; i++) {
+                context.fillStyle = "";
+                context.fillRect(this.position[0] + 42 + i * 12, this.position[1] + 5, 10, 10);
+            }
             for (let i = 0; i < c; i++) {
                 n = 0;
                 this.shoots[i][1] -= 10;

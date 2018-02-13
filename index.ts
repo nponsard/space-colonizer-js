@@ -47,6 +47,10 @@ require(['scripts/domReady'], function (domReady) {
         }
 
         function draw() {
+            if (p1.life<1) {
+                canvas.setAttribute("style","display : none")
+                document.querySelector("#End").setAttribute("style","display:block")
+            }
             context.fillStyle = "#000"
             context.fillRect(0, 0, canvas.width, canvas.height)
             if (left && acc > -15) {
