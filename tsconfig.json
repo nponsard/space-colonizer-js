@@ -6,6 +6,7 @@
         "module": "umd"
     },
     "files": [
-        "index.ts"
+        "index.ts",
+        "modules.ts"
     ]
 }

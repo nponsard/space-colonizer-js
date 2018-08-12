@@ -1,4 +1,4 @@
-export class player {
+class player {
     position: number[]
     life: number
     shoots: number[][] = []
@@ -46,7 +46,7 @@ export class player {
         return mobs
     }
 }
-export class mob {
+class mob {
     position: number[]
     shoots: number[][] = []
     constructor(pos: number[]) {
